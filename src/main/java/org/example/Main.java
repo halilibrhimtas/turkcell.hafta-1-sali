@@ -20,11 +20,11 @@ public class Main {
         int examCount = 0;
 
         //Kullanıcıdan aldığımız sınav notlarını exams ArrayList içerisine ekleyeceğiz
-        ArrayList<Double> exams = new ArrayList<Double>();
+        ArrayList<Integer> exams = new ArrayList<Integer>();
 
         // not ortalaması ve toplamını vereceğimiz değişkenleri tanımlıyoruz
         double average = 0.0; // double 64 bit ve daha hassas hesaplama yapıyor, float kullanmak yerine, double tercih ettim
-        double sum = 0.0;
+        double sum = 0;
 
         /*
         Burada kullanıcıdan alacağımız sınav sayısı için bir kod bloğu bulunmaktadır. Bu kod bloğu try-catch içerisinde
@@ -46,30 +46,29 @@ public class Main {
         /*
         Bu kod bloğunda kullanıcıdan, belirtmiş olduğu sınav sayısı kadar not girişi yapmasını sağlıyoruz.
         Girmiş olduğu notları yine try-catch içerisinde sayısal değer girmesi için kontrol altında tutuyoruz.
-        Girmiş olduğu değerleri double(integer da olabilirdi, sınav puanı hesabı hakkında bilgimiz yok)
-        türünde arrayListe ekliyoruz.
+        Girmiş olduğu değerleri arrayListe ekliyoruz.
         */
         for (int i = 0; i < examCount; i++){
-            Scanner examInput = new Scanner(System.in);
             int currentExam = i+1;
             while (true){
+                Scanner examInput = new Scanner(System.in);
                 try {
                     String message = String.format("Lütfen %d. notu giriniz: ",currentExam);
                     System.out.println(message);
+                    exams.add(examInput.nextInt());
                     break;
                 } catch (Exception e){
                     System.out.println("Geçersiz değer girdiniz");
                     examInput.nextLine();
                 }
             }
-            exams.add(examInput.nextDouble());
         }
 
         /*
         Bu kod bloğunda sınav puanlarını for döngüsü içerisinde topluyoruz ve ortalama hesabı yapıyoruz.
         if şart bloğu ile puanı 80 üzeriyse "Tebrikler. Yüksek puan" yazdırıyoruz."
         */
-        for(double exam: exams){
+        for(int exam: exams){
             sum += exam;
         }
         average = sum / exams.size();
