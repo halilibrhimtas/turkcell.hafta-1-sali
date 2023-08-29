@@ -16,6 +16,25 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        //Encaptulation
+        Ingredient ingredient = new Ingredient();
+        ingredient.setIngredientName("Tomato");
+        ingredient.setIngredientType("Vegetable");
+        ingredient.setAmount(3);
+
+        System.out.println("Ingredient Name:" + ingredient.getIngredientName());
+        System.out.println("Ingredient Type:" + ingredient.getIngredientType());
+        System.out.println("Amount:" + ingredient.getAmount());
+
+        //Inheritance
+        OliveOil oliveOil = new OliveOil();
+        oliveOil.setAmount(3);
+        oliveOil.cookMinutes();
+
+
+        oliveOil.calorieCalculate(4);
+        oliveOil.calorieCalculate(5, 120);
+
         //Kullanıcıdan alacağımız sınav not sayısını examCount değişkenine vereceğiz.
         int examCount = 0;
 
